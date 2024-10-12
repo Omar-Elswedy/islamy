@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:islamy/common/app_theme.dart';
+import 'package:islamy/providers/theme_provider.dart';
 import 'package:islamy/ui/screens/hadeeth_screen.dart';
 import 'package:islamy/ui/screens/home_screen.dart';
 import 'package:islamy/ui/screens/quran_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (_) => ThemeProvider(),
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.dark,
+      themeMode: Provider.of<ThemeProvider>(context).appThemeMode,
       routes: {
         HomeScreen.routeName: (_) => const HomeScreen(),
         QuranScreen.routeName: (_) => const QuranScreen(),

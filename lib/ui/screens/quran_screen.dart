@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 import '../../common/app_images.dart';
 import '../../models/quran_model.dart';
+import '../../providers/theme_provider.dart';
 
 class QuranScreen extends StatefulWidget {
   static const routeName = 'QuranScreen';
@@ -24,7 +26,7 @@ class _QuranScreenState extends State<QuranScreen> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(Theme.of(context).brightness == Brightness.light
+          image: AssetImage(!Provider.of<ThemeProvider>(context).isDark
               ? AppImages.bgImage
               : AppImages.darkBgImage),
           fit: BoxFit.cover,
@@ -67,7 +69,7 @@ class _QuranScreenState extends State<QuranScreen> {
                           return Text(
                             verses[index],
                             textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.titleSmall,
+                            style: Theme.of(context).textTheme.titleMedium,
                             textDirection: TextDirection.rtl,
                           );
                         },

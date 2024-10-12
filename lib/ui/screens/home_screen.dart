@@ -5,6 +5,9 @@ import 'package:islamy/ui/tabs/quran_tab.dart';
 import 'package:islamy/ui/tabs/radio_tab.dart';
 import 'package:islamy/ui/tabs/sebha_tab.dart';
 import 'package:islamy/ui/tabs/settings_tab.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/theme_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/';
@@ -28,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(Theme.of(context).brightness == Brightness.light
+          image: AssetImage(!Provider.of<ThemeProvider>(context).isDark
               ? AppImages.bgImage
               : AppImages.darkBgImage),
           fit: BoxFit.cover,

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:islamy/models/hadeeth_model.dart';
+import 'package:provider/provider.dart';
 
 import '../../common/app_images.dart';
+import '../../providers/theme_provider.dart';
 
 class HadeethScreen extends StatelessWidget {
   static const String routeName = 'HadeethScreen';
@@ -14,7 +16,7 @@ class HadeethScreen extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(Theme.of(context).brightness == Brightness.light
+          image: AssetImage(!Provider.of<ThemeProvider>(context).isDark
               ? AppImages.bgImage
               : AppImages.darkBgImage),
           fit: BoxFit.cover,
