@@ -310,7 +310,7 @@ class QuranTab extends StatelessWidget {
           alignment: Alignment.center,
           child: VerticalDivider(
             indent: MediaQuery.of(context).size.height * .26,
-            color: Theme.of(context).primaryColor,
+            color: Theme.of(context).dividerColor,
             thickness: 2,
           ),
         ),

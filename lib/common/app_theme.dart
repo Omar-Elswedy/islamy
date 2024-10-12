@@ -20,6 +20,11 @@ class AppTheme {
         surface: Colors.white,
         onSurface: Colors.white),
     textTheme: TextTheme(
+      titleLarge: TextStyle(
+        fontSize: 25,
+        fontWeight: FontWeight.w400,
+        color: AppColors.black,
+      ),
       titleSmall: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.w500,
@@ -69,10 +74,15 @@ class AppTheme {
         surface: Colors.white,
         onSurface: Colors.white),
     textTheme: TextTheme(
+      titleLarge: TextStyle(
+        fontSize: 25,
+        fontWeight: FontWeight.w400,
+        color: AppColors.gold,
+      ),
       titleSmall: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.w500,
-        color: AppColors.black,
+        color: AppColors.gold,
       ),
       titleMedium: TextStyle(
         fontSize: 25,

@@ -28,7 +28,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(AppImages.bgImage),
+          image: AssetImage(Theme.of(context).brightness == Brightness.light
+              ? AppImages.bgImage
+              : AppImages.darkBgImage),
           fit: BoxFit.cover,
         ),
       ),

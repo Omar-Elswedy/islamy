@@ -24,7 +24,9 @@ class _QuranScreenState extends State<QuranScreen> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(AppImages.bgImage),
+          image: AssetImage(Theme.of(context).brightness == Brightness.light
+              ? AppImages.bgImage
+              : AppImages.darkBgImage),
           fit: BoxFit.cover,
         ),
       ),
@@ -46,7 +48,7 @@ class _QuranScreenState extends State<QuranScreen> {
             children: [
               Text(
                 suraData.suraName!,
-                style: Theme.of(context).textTheme.titleMedium,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               Divider(
                 thickness: 2,
