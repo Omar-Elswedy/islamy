@@ -9,4 +9,6 @@ class AppImages {
   static String quranHeaderIcn = 'assets/images/quran_header_icn.png';
   static String hadeethHeaderIcn = 'assets/images/hadith_header.png';
   static String sebhaHeaderIcn = 'assets/images/sebha_body.png';
+  static String sebhaDarkHeaderIcn = 'assets/images/sebha_body_dark.png';
+  static String radioImageHeaderIcn = 'assets/images/radio_image.png';
 }

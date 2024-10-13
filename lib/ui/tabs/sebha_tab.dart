@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../common/app_images.dart';
+import '../../providers/theme_provider.dart';
 
 class SebhaTab extends StatefulWidget {
   const SebhaTab({super.key});
@@ -9,56 +11,66 @@ class SebhaTab extends StatefulWidget {
   State<SebhaTab> createState() => _SebhaTabState();
 }
 
-class _SebhaTabState extends State<SebhaTab>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
-  int clickCount = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(seconds: 1),
-      vsync: this,
-    );
-
-    _animation = Tween<double>(begin: 0, end: 1).animate(_controller);
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  void _rotate() {
-    if (_controller.status == AnimationStatus.completed) {
-      _controller.reverse();
-    } else {
-      _controller.forward();
-    }
-  }
-
+class _SebhaTabState extends State<SebhaTab> {
+  double clickCount = 0;
+  int counter = 0;
+  int index = 0;
+  List<String> tasbehat = ['سبحان الله', 'الحمدلله', 'الله اكبر'];
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        RotationTransition(
-          turns: _animation,
-          child: Image.asset(
-            AppImages.sebhaHeaderIcn,
-            height: MediaQuery.of(context).size.height * .25,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Transform.rotate(
+              angle: clickCount,
+              child: Image.asset(
+                !Provider.of<ThemeProvider>(context).isDark
+                    ? AppImages.sebhaHeaderIcn
+                    : AppImages.sebhaDarkHeaderIcn,
+                height: MediaQuery.of(context).size.height * .25,
+              ),
+            ),
+          ],
+        ),
+        Text(
+          'عدد التسبيحات',
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        Container(
+          padding: EdgeInsets.all(20),
+          decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+              borderRadius: BorderRadius.circular(20)),
+          child: Text(
+            '$counter',
+            style: Theme.of(context).textTheme.titleMedium,
           ),
         ),
-        Text('Number of tasbehat'),
         MaterialButton(
+          color: Theme.of(context).colorScheme.secondary,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           onPressed: () {
             setState(() {
-              _rotate();
+              clickCount = clickCount + 0.19;
+              if (counter >= 33) {
+                counter = 0;
+                clickCount = 0;
+                if (tasbehat[index] == tasbehat.last) {
+                  index = -1;
+                }
+                index++;
+              }
+              counter++;
             });
           },
-          child: Text('Click'),
+          child: Text(
+            tasbehat[index],
+            style: Theme.of(context).textTheme.labelMedium,
+          ),
         )
       ],
     );

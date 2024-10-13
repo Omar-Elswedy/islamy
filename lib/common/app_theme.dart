@@ -11,7 +11,7 @@ class AppTheme {
         brightness: Brightness.light,
         primary: AppColors.mainLightColor,
         onPrimary: AppColors.white,
-        secondary: Colors.white,
+        secondary: AppColors.mainLightColor,
         onSecondary: Colors.white,
         error: Colors.red,
         onError: Colors.white,
@@ -34,6 +34,11 @@ class AppTheme {
         fontSize: 25,
         fontWeight: FontWeight.w400,
         color: AppColors.black,
+      ),
+      labelMedium: TextStyle(
+        fontSize: 25,
+        fontWeight: FontWeight.w400,
+        color: AppColors.white,
       ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -65,7 +70,7 @@ class AppTheme {
         brightness: Brightness.dark,
         primary: AppColors.mainDarkColor,
         onPrimary: AppColors.mainDarkColor,
-        secondary: Colors.white,
+        secondary: AppColors.gold,
         onSecondary: Colors.white,
         error: Colors.red,
         onError: Colors.white,
@@ -88,6 +93,11 @@ class AppTheme {
         fontSize: 25,
         fontWeight: FontWeight.w400,
         color: AppColors.white,
+      ),
+      labelMedium: TextStyle(
+        fontSize: 25,
+        fontWeight: FontWeight.w400,
+        color: AppColors.black,
       ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
