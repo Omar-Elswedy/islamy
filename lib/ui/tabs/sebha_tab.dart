@@ -19,18 +19,21 @@ class _SebhaTabState extends State<SebhaTab> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Transform.rotate(
               angle: clickCount,
-              child: Image.asset(
-                !Provider.of<ThemeProvider>(context).isDark
-                    ? AppImages.sebhaHeaderIcn
-                    : AppImages.sebhaDarkHeaderIcn,
-                height: MediaQuery.of(context).size.height * .25,
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height * .4,
+                width: MediaQuery.of(context).size.width * .7,
+                child: Image.asset(
+                  !Provider.of<ThemeProvider>(context).isDark
+                      ? AppImages.sebhaHeaderIcn
+                      : AppImages.sebhaDarkHeaderIcn,
+                  height: MediaQuery.of(context).size.height * .25,
+                ),
               ),
             ),
           ],
@@ -39,8 +42,13 @@ class _SebhaTabState extends State<SebhaTab> {
           'عدد التسبيحات',
           style: Theme.of(context).textTheme.titleMedium,
         ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * .03,
+        ),
         Container(
           padding: EdgeInsets.all(20),
+          margin:
+              EdgeInsets.only(bottom: MediaQuery.of(context).size.height * .02),
           decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
               borderRadius: BorderRadius.circular(20)),
